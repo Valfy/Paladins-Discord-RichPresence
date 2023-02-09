@@ -1,0 +1,37 @@
+{
+  "Access": {
+    "devid": "----",
+    "authkey": "----"
+  },
+
+  "Account": "----",
+
+  "Language": "EN",
+
+  "Discord": {
+    "offline": {
+      "upper_text": "{player} is offline",
+      "bottom_text": "Probably will launch Paladins soon",
+      "image_text": "{time_rich_presence}"
+    },
+
+    "idle": {
+      "upper_text": "{player} is idle",
+      "bottom_text": "In lobby",
+      "image_text": "Playing Paladins for {time}"
+    },
+
+    "choose_phase": {
+      "upper_text": "{player} choosing champion",
+      "bottom_text": "In match lobby",
+      "image_text": "Who it will be?"
+    },
+
+    "in_match": {
+      "upper_text": "{player} playing as {champion}",
+      "bottom_text": "On {map}",
+      "image_text": "{champion} (Mastery: {mastery})"
+    }
+
+  }
+}
