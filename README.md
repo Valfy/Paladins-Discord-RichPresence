@@ -1,6 +1,8 @@
 # Paladins Discord Rich Presence
 [![python](https://img.shields.io/badge/python-3.10-blue)](https://www.python.org/downloads/release/python-3100/) [![pyrez](https://img.shields.io/badge/Pyrez-1.1.1.1-yellow)](https://github.com/luissilva1044894/Pyrez) [![pypresence](https://img.shields.io/badge/pypresence-4.2.1-blue)](https://pypi.org/project/pypresence/)
 
+#### Paladins Discord Rich Presence is small CLI application which shows Paladins in-game status in real time in your Discord profile.
+
 How CLI looks like:
 
 ![CLI](https://cdn.discordapp.com/attachments/797777445537054720/1073252422157336660/image.png)
@@ -34,7 +36,7 @@ Now you ready to use the application.
 
 ### How to customize rich presence text
 
-For each in-game status you can customize text in ***settings.json*** file.
+For each in-game status you can customize text by using replacement words in ***settings.json*** file.
 
 ```json
   "Discord": {
@@ -55,7 +57,7 @@ For each in-game status you can customize text in ***settings.json*** file.
     }
 ```
 
-By using replacement words
+List of options.
 + `{player}` - username
 + `{title}` - in-game title
 + `{account_level}` - account level
@@ -66,8 +68,6 @@ By using replacement words
 + `{map}` - map you are playing on (use it only in **"in_match"** in-game status)
 + `{time}` - time since game launch (with this app)
 + `{time_rich_presence}` - time since app launch
-
-So it will be automaticly replaced by your playername and champion you playing.
 
 ### How to change app lanuguage
 
