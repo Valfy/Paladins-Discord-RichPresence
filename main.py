@@ -132,21 +132,27 @@ def get_player_status() -> list:
     return [Status_Request["status"], Status_Request["Match"]]
 
 
-def get_player_activity(match_id) -> list:
+def get_player_activity(match_id):
     Match_Info = API.getMatch(matchId=match_id, isLiveMatch=True)
     for player in Match_Info:
         if int(player["playerId"]) == PLAYER_ID["player_id"]:
+            if player["mapGame"] == "LIVE Shooting Range Local":
+                image = "target"
+                champion = "Undefined champion"
+            else:
+                image = str((player["ChampionName"]).lower()).replace("'", "")
+                champion = player["ChampionName"]
             if SETTINGS["Language"].upper == 'RU':
-                return [str((player["ChampionName"]).lower()).replace("'", ""),
+                return [image,
                         map_rename_ru(player["mapGame"]),
-                        HD.champion_names[player["ChampionName"]] if player["ChampionName"] in HD.champion_names else player["ChampionName"],
+                        HD.champion_names[champion] if champion in HD.champion_names else champion,
                         player["Mastery_Level"]]
             else:
-                return [str((player["ChampionName"]).lower()).replace("'", ""),
+                return [image,
                         str(player["mapGame"]).replace("LIVE ", ""),
-                        player["ChampionName"],
+                        champion,
                         player["Mastery_Level"]]
-    return [None] * 4
+    return None
 
 
 def get_player_info() -> list:
@@ -166,7 +172,7 @@ if __name__ == '__main__':
         import helpful_dicts as HD
 
     for step in range(2, 5):
-        CLI.messaging(step, 'api_connect', 'start')
+        CLI.messaging(step, list_to_prepare[step][0], 'start')
         process = list_to_prepare[step][1]()
 
         delete_lines(process[1])
@@ -202,9 +208,9 @@ if __name__ == '__main__':
         namespaces = {'player': SETTINGS['Account'],
                       'time_rich_presence': datetime.timedelta(seconds=round(TIME)),
                       'time': datetime.timedelta(seconds=round(TIME_ONLINE)),
-                      'map': Data[1] if Data else None,
-                      'champion': Data[2] if Data else None,
-                      'mastery': Data[3] if Data else None,
+                      'map': Data[1] if Data else "Unknown",
+                      'champion': Data[2] if Data else "Unknown",
+                      'mastery': Data[3] if Data else "Unknown",
                       'title': Info[0],
                       'account_level': Info[1],
                       'total_hours': Info[2],

@@ -1,4 +1,5 @@
 champion_names = {
+    "Undefined champion": 'Неопределенный чемпион',
     "Lian": 'Лиан',
     "Vora": 'Вора',
     "Drogoz": 'Дрогоз',
