@@ -92,11 +92,11 @@ def api_connect() -> list:
         API = PaladinsAPI_fixed(devId=int(SETTINGS['Access']['devid']), authKey=SETTINGS['Access']['authkey'])
         session = API._createSession()
     except ValueError:
-        return [False, 1, 'error_value']
+        return (False, 1, 'error_value')
     except (pyrez.exceptions.InvalidArgument, pyrez.exceptions.IdOrAuthEmpty, UnboundLocalError):
-        return [False, 2, 'error']
+        return (False, 2, 'error')
     else:
-        return [True, 1, 'finish']
+        return (True, 1, 'finish')
 
 
 def search_player() -> list:
@@ -104,9 +104,9 @@ def search_player() -> list:
     try:
         PLAYER_ID = API.getPlayerId(playerName=SETTINGS["Account"], portalId=None, xboxOrSwitch=False)[0]
     except IndexError:
-        return [False, 1, 'error']
+        return (False, 1, 'error')
     else:
-        return [True, 1, 'finish']
+        return (True, 1, 'finish')
 
 
 def presence_connect() -> list:
@@ -115,21 +115,21 @@ def presence_connect() -> list:
         RICHPRESENCE = Presence(DISCORD_APP)
         RICHPRESENCE.connect()
     except:
-        return [False, 1, 'error']
+        return (False, 1, 'error')
     else:
-        return [True, 1, 'finish']
+        return (True, 1, 'finish')
 
 
 list_to_prepare = {
-        2: ['api_connect', api_connect],
-        3: ['searching_player', search_player],
-        4: ['rich_presence_connect', presence_connect]
+        2: ('api_connect', api_connect),
+        3: ('searching_player', search_player),
+        4: ('rich_presence_connect', presence_connect)
     }
 
 #Active phase functions
 def get_player_status() -> list:
     Status_Request = API.getPlayerStatus(playerId=PLAYER_ID["player_id"])
-    return [Status_Request["status"], Status_Request["Match"]]
+    return (Status_Request["status"], Status_Request["Match"])
 
 
 def get_player_activity(match_id):
@@ -143,24 +143,24 @@ def get_player_activity(match_id):
                 image = str((player["ChampionName"]).lower()).replace("'", "")
                 champion = player["ChampionName"]
             if SETTINGS["Language"].upper == 'RU':
-                return [image,
+                return (image,
                         map_rename_ru(player["mapGame"]),
                         HD.champion_names[champion] if champion in HD.champion_names else champion,
-                        player["Mastery_Level"]]
+                        player["Mastery_Level"])
             else:
-                return [image,
+                return (image,
                         str(player["mapGame"]).replace("LIVE ", ""),
                         champion,
-                        player["Mastery_Level"]]
+                        player["Mastery_Level"])
     return None
 
 
 def get_player_info() -> list:
     Player_Info = API.getPlayer(player=SETTINGS["Account"])
-    return [Player_Info["Title"],
+    return (Player_Info["Title"],
             Player_Info["Level"],
             Player_Info["HoursPlayed"],
-            HD.rank_names[max(Player_Info["Tier_RankedKBM"], Player_Info["Tier_RankedController"])]]
+            HD.rank_names[max(Player_Info["Tier_RankedKBM"], Player_Info["Tier_RankedController"])])
 
 
 if __name__ == '__main__':
