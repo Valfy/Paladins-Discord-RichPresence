@@ -5,13 +5,13 @@
 
 How CLI looks like:
 
-![CLI](https://cdn.discordapp.com/attachments/797777445537054720/1073252422157336660/image.png)
+![CLI](https://cdn.discordapp.com/attachments/797777445537054720/1073252422157336660/image.png?ex=65fc4735&is=65e9d235&hm=d6bcc8e0e334b591529910367af785e2a44db60a5fefdf327979cc46b9055fea&)
 
 How Rich Presence looks like:
 
-![Rich Presence](https://cdn.discordapp.com/attachments/797777445537054720/1073252674050469928/image.png)
+![Rich Presence](https://cdn.discordapp.com/attachments/797777445537054720/1073252674050469928/image.png?ex=65fc4771&is=65e9d271&hm=4436775fadce26e0ed2218ea3d29b061ebc7eac4db495b0a5927d09a0ccdafe4&)
 
-![Rich Presence with Champion image](https://cdn.discordapp.com/attachments/797777445537054720/1073253248997265499/image.png)
+![Rich Presence with Champion image](https://cdn.discordapp.com/attachments/797777445537054720/1073253248997265499/image.png?ex=65fc47fa&is=65e9d2fa&hm=c6c69b05e9ac381e35a70ac4ef6255ab4d609c15b9baa5eb8b302a7d42c36453&)
 
 ### How to use
 
